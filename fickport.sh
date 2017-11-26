@@ -17,5 +17,10 @@ wget --save-cookies cookies.txt \
      "http://${speedport}/data/Login.json?lang=en"
 
 # Extract CSRF Token
-csrftoken=$(wget -q -O - "http://${speedport}/html/content/overview/index.html?lang=en" | grep "var csrf_token " | cut -d "'" -f 2)
+csrftoken=$(wget --load-cookies cookies.txt -q -O - "http://${speedport}/html/content/overview/index.html?lang=en" | grep "var csrf_token " | cut -d "'" -f 2)
 
+# Reboot!
+wget --load-cookies cookies.txt \
+     --post-data 'reboot_device=true&csrf_token=${csrftoken}' \
+     --delete-after \
+     "http://${speedport}/data/Reboot.json?_time=1511727315027&_rand=128&csrf_token=${csrftoken}&lang=en"
