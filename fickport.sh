@@ -14,6 +14,8 @@ wget --save-cookies cookies.txt \
      --keep-session-cookies \
      --post-data 'password=${hashpwd}&showpw=0&csrf_token=sercomm_csrf_token' \
      --delete-after \
-     "http://${speedport}//data/Login.json?lang=en"
+     "http://${speedport}/data/Login.json?lang=en"
 
+# Extract CSRF Token
+csrftoken=$(wget -q -O - "http://${speedport}/html/content/overview/index.html?lang=en" | grep "var csrf_token " | cut -d "'" -f 2)
 
