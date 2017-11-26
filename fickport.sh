@@ -7,7 +7,7 @@ devpwd=***REMOVED***
 challenge=$(wget -q -O - "http://${speedport}/data/Login.json?_time=1511719881983&_rand=666&csrf_token=sercomm_csrf_token" | sed 's/.*challenge", "varvalue"\: "\([^"]*\).*/\1/')
 
 # Hashed password + challenge
-hashpwd=$(echo -n "${devpwd}${challenge}" | sha256sum)
+hashpwd=$(echo -n "${devpwd}${challenge}" | sha256sum | cut -d" " -f1)
 
 # Log in to the server
 wget --save-cookies cookies.txt \
