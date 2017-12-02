@@ -9,6 +9,8 @@
 enpwr() {
 	cd /var/fickport
 	chmod +x bin/*
+	ln -sf busybox bin/sha256sum
+	ln -sf busybox bin/ls
 	# the new "wget" and "busybox" should have higher priority than the system ones, since the fickport "bin" folder is the first entry in $PATH
 	export PATH=/var/fickport/bin:/bin:/sbin:/usr/bin:/usr/sbin
 }
