@@ -4,27 +4,13 @@
 # 
 # 
 
-# FICKPORT FUNCTIONS
-# download fickport zip file
-dwfp() {
-	mkdir -p /var/tmp/fickport
-	cd /var/tmp/
-	#wget https://github.com/Gia90/Fickport/archive/master.zip
-	wget http://192.168.2.107:8000/a.zip
-	unzip a.zip -d fickport
-	chmod +x fickport/*
-	rm a.zip
-}
-
-# replace busybox and wget with fully equipped ones
+# FICKPORT
+# enpower busybox and wget (fully equipped mips binaries)
 enpwr() {
-	cd /var/tmp/fickport/
-	cp -R /bin /var/tmp/bindbin
-	# Overwrite busybox and
-	# the new "wget" will have higher priority than the "/usr/bin" busybox symlinked one, since "/bin" is the first entry in $PATH
-	cp -R bin/. /var/tmp/bindbin/
-	chmod +x /var/tmp/bindbin/busybox
-	mount -o bind /var/tmp/bindbin /bin
+	cd /var/fickport
+	chmod +x bin/*
+	# the new "wget" and "busybox" should have higher priority than the system ones, since the fickport "bin" folder is the first entry in $PATH
+	export PATH=/var/fickport/bin:/bin:/sbin:/usr/bin:/usr/sbin
 }
 
 # ORIGINAL FUNCTIONS
@@ -35,7 +21,6 @@ rsctl () {
 #
 # prepare and start telnetd
 rstd () {
-	export PATH=/bin:/sbin:/usr/bin:/usr/sbin
 	# based on code by PeterPawn ip-phone-forum.de
 	cd /var/tmp
 	cp -R /usr/sbin /var/tmp/usersbin
@@ -65,13 +50,13 @@ cleanup () {
 	echo clear_id 87 > /proc/tffs
 }
 #
+# Fickport!
+enpwr
 # Now calling the functions
 rsctl
 rstd
+# Cleaning up
 cleanup
-# Fickport!
-dwfp
-#enpwr
 
 #
 # kill firmwarecfg or box will reboot after about one minute

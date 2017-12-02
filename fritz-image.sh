@@ -1,8 +1,13 @@
 #!/bin/bash
 
-mkdir var
+IMAGENAME="fickport.tar"
+
+mkdir -p var/fickport/
 cp install var/
-tar -cf fickport.tar var/
+cp *.sh var/fickport/
+cp -R bin var/fickport
+
+tar -cf "$IMAGENAME" var/
 rm -R var
 
-echo "[OK] fritzbox update-image created: fickport.tar"
+echo "[OK] fritzbox fake update-image created: $IMAGENAME"
