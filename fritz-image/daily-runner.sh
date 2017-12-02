@@ -1,6 +1,7 @@
 #!/bin/sh
 # DailyRunner :)
 #  Daily run a custom command at a specific time
+#  without crontab, at or GNU-date coreutils
 
 helpme() {
 	
@@ -22,12 +23,16 @@ fi
 cmdToRun="$1"
 timeToRun="$2"
 
+# Compute tomorrow date (YYYY-MM-DD)
+tomorrow() {
+	echo $(date -d @$(( $(date -d $(date +%D) +%s) + 86400 )) +%F)
+}
+
 # Sleep till the specified "date string" (see "date" man for more info)
 sleepTill() {
 
 	now=$(date +%s)
 	runAt=$(date -d "$1" +%s)
-	#runAt=$(date -d "00:49" +%s)
 	secsToWait=$(($runAt - $now))
 
 	if [ "$secsToWait" -lt 0 ]; then
@@ -53,7 +58,7 @@ fi
 # and then run it every day (tomorrow at the same timeToRun time)
 while :
 do
-	sleepTill "tomorrow $timeToRun"
+	sleepTill "$(tomorrow) $timeToRun"
 	echo "[>] Running \"$cmdToRun\" (`date`)"
 	$cmdToRun
 done
