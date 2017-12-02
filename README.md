@@ -14,7 +14,7 @@ function hash(devpwd, challenge){
 ### Reboot call
 
 ### More info
-Read the content of [fritzbox.sh](fritzbox.sh) to know more about the command HTTP calls.
+Read the content of [fickport.sh](fickport.sh) to know more about the command HTTP calls.
 
 ## Fickport
 Reboot script
