@@ -1,6 +1,21 @@
 # WG-Reboot
 ## Introduction
 
+## Speedport Entry 2
+### Login process
+Javascript code used to generate the hashed password used for the login POST call:
+````
+function hash(devpwd, challenge){
+ var hash_pwd = devpwd+challenge;
+ var password = sjcl.codec.hex.fromBits(sjcl.hash.sha256.hash(hash_pwd));
+ return password;
+}
+````
+### Reboot call
+
+### More info
+Read the content of [fritzbox.sh](fritzbox.sh) to know more about the command HTTP calls.
+
 ## Fickport
 Reboot script
 
