@@ -36,7 +36,7 @@ sleepTill() {
 	secsToWait=$(($runAt - $now))
 
 	if [ "$secsToWait" -lt 0 ]; then
-		echo "[!sleepTill] The specified date ($1) is in the past! ($runAt < $now)"
+		(>&2 echo "[!sleepTill] The specified date ($1) is in the past! ($runAt < $now)")
 		return 1
 	fi
 	
@@ -49,7 +49,7 @@ echo
 echo "[>] Starting daily runner for \"$cmdToRun\" at \"$timeToRun\" (`date`)"
 
 # If it's earlier than timeToRun, run it also today
-if sleepTill "$timeToRun"; then
+if sleepTill "$timeToRun" 2> /dev/null ; then
 	echo "[>] Running \"$cmdToRun\" also in the initial day (`date`)"
 	$cmdToRun
 fi
