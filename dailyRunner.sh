@@ -5,15 +5,12 @@
 cmdToRun="$1"
 timeToRun="$2"
 
-#cmdToRun="./fickport.sh"
-#timeToRun="3:33"
-
 # TODO: add input args check
 
 # TODO: add help
 
 # Sleep till the specified "date string" (see "date" man for more info)
-function sleepTill {
+sleepTill() {
 
 	now=$(date +%s)
 	runAt=$(date -d "$1" +%s)
