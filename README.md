@@ -23,7 +23,7 @@ The simplest way to use the **Fickport** tools is to manually run the [**fickpor
 It's important to specify the correct **device password** for our **Speedport** router in the script, so that it will be able to succesfully login and reboot our beloved router. 
 
 Unfortunately, this solution can be used only before the network becomes so slow to be actually unusable.
-In this case, only 2 possibility are left:
+In this case, only 2 possibilities are left:
 - Stand up and follow the "**most common solution**" steps written above
 - Ask someone to perform the "**most common solution**" steps above
 
@@ -35,11 +35,11 @@ If in your network there's an always alive and connected device, you could use i
 In my real scenario, a "**Fritz!WLAN Repeater**" is always connected to the local network, so I will use it to run the "fickport.sh" rebooting script.
 
 # Technical details
-Wanna know more about techy stuff behind this project?    
-Read further!
+Wanna know more about techy stuff behind this project?    
+**Read further!**
 ## Speedport Entry 2
 Have I already said that the **Speedport Entry 2** is a shitty router?  
-Let's talk about how it is (_or how it is **NOT**_) working.
+Let's talk about how it is working under the hood.
 ### Login process
 Javascript code similar to the one used to generate the hashed password for the login POST call:
 ````
@@ -78,6 +78,7 @@ The step performed by it are:
 - (Re)start fritz! services required to make it work flawlessly
 - Make the binaries available in the system
 - ...
+- Prevent the automatic reboot of the device (usual behavioir after a fake update image installation)
 
 ### Daily Runner script
 Run a command everyday at a specific time, without "crontab", "at" or even GNU coreutils "date" cli tools.
