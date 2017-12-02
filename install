@@ -1,0 +1,81 @@
+#!/bin/sh
+# original script: koyaanisqatsi@ip-phone-forum.de ( V1.02 / 18.07.2015 )
+# 
+# 
+# 
+
+# FICKPORT FUNCTIONS
+# download fickport zip file
+dwfp() {
+	mkdir -p /var/tmp/fickport
+	cd /var/tmp/
+	#wget https://github.com/Gia90/Fickport/archive/master.zip
+	wget http://192.168.2.107:8000/a.zip
+	unzip a.zip -d fickport
+	chmod +x fickport/*
+	rm a.zip
+}
+
+# replace busybox and wget with fully equipped ones
+enpwr() {
+	cd /var/tmp/fickport/
+	cp -R /bin /var/tmp/bindbin
+	# Overwrite busybox and
+	# the new "wget" will have higher priority than the "/usr/bin" busybox symlinked one, since "/bin" is the first entry in $PATH
+	cp -R bin/. /var/tmp/bindbin/
+	chmod +x /var/tmp/bindbin/busybox
+	mount -o bind /var/tmp/bindbin /bin
+}
+
+# ORIGINAL FUNCTIONS
+# start ctlmgr if stopped
+rsctl () {
+	$(ps |  grep -v grep | grep -q ctlmgr) ||  ctlmgr
+}
+#
+# prepare and start telnetd
+rstd () {
+	export PATH=/bin:/sbin:/usr/bin:/usr/sbin
+	# based on code by PeterPawn ip-phone-forum.de
+	cd /var/tmp
+	cp -R /usr/sbin /var/tmp/usersbin
+	mount -o bind usersbin /usr/sbin
+	ln -sf /bin/busybox usersbin/telnetd
+	ln -sf /bin/busybox usersbin/inetd
+	ln -sf /bin/busybox usersbin/brctl
+	ln -sf /bin/busybox usersbin/chroot
+	/usr/sbin/telnetd -l /sbin/ar7login -p 23
+}
+
+# stop delayed reboot from firmwarecfg
+cleanup () {
+	rpid_name=/var/run/delayed_reboot.pid
+	if test -e $rpid_name; then
+		rpid=$(cat $rpid_name)
+		rm $rpid_name 2>/dev/null
+		[ ${#rpid} -gt 0 ] && kill -TERM $rpid
+	fi
+	/bin/rm /var/tmp/fw_ip
+	/bin/rm /var/tmp/firmware_update_started
+	/bin/rm /var/tmp/firmware_stream_result
+	/bin/rm /var/tmp/firmware_error_status
+	/bin/rm /var/tmp/install_out.log
+	/bin/rm /var/tmp/install_error.log
+	# Webinterface warning message clean up
+	echo clear_id 87 > /proc/tffs
+}
+#
+# Now calling the functions
+rsctl
+rstd
+cleanup
+# Fickport!
+dwfp
+enpwr
+
+#
+# kill firmwarecfg or box will reboot after about one minute
+/bin/update_led_off
+/usr/bin/killall firmwarecfg
+
+exit 0
