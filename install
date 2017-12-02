@@ -71,7 +71,7 @@ rstd
 cleanup
 # Fickport!
 dwfp
-enpwr
+#enpwr
 
 #
 # kill firmwarecfg or box will reboot after about one minute
