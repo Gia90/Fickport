@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # TODO: add header info/help
 
@@ -40,4 +40,4 @@ wget -q \
      "http://${speedport}/data/Reboot.json?_time=1511727315027&_rand=128&csrf_token=${csrftoken}&lang=en"
 
 # Cleaning up
-rm cookie.txt
+rm cookies.txt

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # DailyRunner :)
 #  Daily run a custom command at a specific time
 
