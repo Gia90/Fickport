@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# TODO: add header info/help
+
 speedport=speedport.ip
 devpwd=***REMOVED***
 
@@ -36,3 +38,6 @@ wget -q \
      --post-data "reboot_device=true&csrf_token=${csrftoken}" \
      --delete-after \
      "http://${speedport}/data/Reboot.json?_time=1511727315027&_rand=128&csrf_token=${csrftoken}&lang=en"
+
+# Cleaning up
+rm cookie.txt
