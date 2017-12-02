@@ -3,7 +3,7 @@
 
 ## Speedport Entry 2
 ### Login process
-Javascript code used to generate the hashed password used for the login POST call:
+Javascript code similar to the one used to generate the hashed password for the login POST call:
 ````
 function hash(devpwd, challenge){
  var hash_pwd = devpwd+challenge;
