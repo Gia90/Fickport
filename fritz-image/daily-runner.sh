@@ -25,7 +25,7 @@ timeToRun="$2"
 
 # Compute tomorrow date (YYYY-MM-DD)
 tomorrow() {
-	echo $(date -d @$(( $(date -d $(date +%D) +%s) + 86400 )) +%F)
+	echo $(date -d @$(( $(date -d $(date +%F) +%s) + 86400 )) +%F)
 }
 
 # Sleep till the specified "date string" (see "date" man for more info)
