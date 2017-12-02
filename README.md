@@ -72,14 +72,14 @@ Fritz! Fickbox Image content:
 - **Daily Runner** script
 - **Binaries** folder
 
-#### Install script
+### Install script
 This is the entrypoint script run when the fake update image is installed to the Fritz device.
 The step performed by it are:
 - (Re)start fritz! services required to make it work flawlessly
 - Make the binaries available in the system
 - ...
 
-#### Daily Runner script
+### Daily Runner script
 Run a command everyday at a specific time, without "crontab", "at" or even GNU coreutils "date" cli tools.
 [daily-runner.sh](fritz-image/daily-runner.sh)
 
