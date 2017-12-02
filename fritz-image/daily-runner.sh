@@ -2,12 +2,25 @@
 # DailyRunner :)
 #  Daily run a custom command at a specific time
 
+helpme() {
+	
+	echo "Daily Runner: run a command every day at specific time"
+	echo "Usage: `basename "$0"` CMD TIME"
+	echo -e "  CMD:\tThe command to run"
+	echo -e "  TIME:\tThe time at wich run the command (e.g. \"3:33\")"
+
+	exit $1
+}
+
+# Check input parameters
+if [ "$#" -ne 2 ]; then
+	echo "[ERROR] Illegal number of parameters"
+	helpme 1
+fi
+
+# Store input parameters
 cmdToRun="$1"
 timeToRun="$2"
-
-# TODO: add input args check
-
-# TODO: add help
 
 # Sleep till the specified "date string" (see "date" man for more info)
 sleepTill() {
