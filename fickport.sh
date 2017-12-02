@@ -2,8 +2,9 @@
 
 # TODO: add header info/help
 
-speedport=speedport.ip
-devpwd=***REMOVED***
+speedport="speedport.ip"
+# The device password to login to the Speedport2
+devpwd="????????"
 
 # Get the challenge value
 challenge=$(wget -q -O - "http://${speedport}/data/Login.json?_time=1511719881983&_rand=666&csrf_token=sercomm_csrf_token" | sed 's/.*challenge", "varvalue"\: "\([^"]*\).*/\1/')
