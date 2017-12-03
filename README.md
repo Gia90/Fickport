@@ -93,8 +93,9 @@ wget --load-cookies cookies.txt \
 Read the content of [**fickport.sh**](fickport.sh) to know more about the HTTP calls used to execute commands on the Speedport device.
 
 ## Fritz! Device
-**The information in the following paragraphs strictly depend on the specific Fritz! device model and firmware version in use.**
-It's very likely that they you'll need to figure out other ways to get into your Fritz! device and be able to run custom code on it.
+> **The information in the following paragraphs strictly depend on the specific Fritz! device model and firmware version in use.**    
+
+It's very likely that they you'll need to figure out other ways to be able to run custom code on different **Fritz! device**, you'll probabily need also to modify/adapt the provided scripts depending on the (usally limited) available tools in the target system.
 
 ### Fritz Fickbox Image
 With **old enough Fritz!OS firmware versions**, it's possible to create a **"fake" firmware update image** and upload it to the Fritz device to run code on it.
@@ -137,7 +138,7 @@ The **main functionalities** implemented in it are:
 - **Prevent the automatic reboot** of the device (_usual behaviour after a fake update image installation_)
 
 ### Daily Runner script
-Run a command everyday at a specific time, without "crontab", "at" or even GNU coreutils "date" cli tools.  
+Run a command everyday at a specific time, **without "crontab", "at" or even GNU coreutils "date" cli tools**.  
 > [daily-runner.sh](fritz-image/daily-runner.sh)
 
 This script is used to daily run "**fickport**" on the Fritz MIPS device and reboot the speedport2 every night.
