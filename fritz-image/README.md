@@ -46,10 +46,12 @@ Now you can follow these instruction to install it to the Fritz! device:
 ## Install script
 This is the **entrypoint script** run when the fake update image is installed to the **Fritz! device**.
 
+In this file are basically defined all the core operations to prepare the environment, start additional services, install and run the **Fickport** tools.
+
 ## Daily Runner script
 Run a command everyday at a specific time, **without "crontab", "at" or even GNU coreutils "date" cli tools**.  
 
-This script is used to daily run "**fickport**" on the Fritz MIPS device and reboot the speedport2 every night.
+This script is used to daily run "**fickport.sh**" on the Fritz MIPS device and reboot the speedport2 every night.
 
 ## MIPS Binaries
 Full-equipped cli **MIPS little endian binaries**
