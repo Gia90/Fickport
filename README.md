@@ -18,7 +18,7 @@ For this reason, the "**Fickport**" project was born :)
 There are different ways to use the **Fickport** tools.  
 The next paragraphs describe the possible uses.
 
-### Manually reboot
+### Manual reboot
 The simplest way to use the **Fickport** tools is to manually run the [**fickport.sh**](fickport.sh) bash script, everytime we start noticing the first signs of slowness in the network.
 It's important to specify the correct **device password** for our **Speedport** router in the script, so that it will be able to succesfully login and reboot our beloved router. 
 
@@ -32,7 +32,7 @@ The real (*dirty*) solution would be preventing the performance degradation by d
 ### Auto daily reboot
 If in your network there's an always alive and connected linux device, you could use it to periodically run the **fickport.sh** script and automatically reboot the router.  
 
-In my real scenario, a "**Fritz!WLAN Repeater**" is always connected to the local network, so I will use it to run the "fickport.sh" rebooting script.
+In my real scenario, a "**Fritz!WLAN Repeater**" is always connected to the local network, so I decided to use it to run the "**fickport.sh**" rebooting script.
 
 # Technical details
 Wanna know more about techy stuff behind this project?    
