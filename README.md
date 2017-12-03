@@ -33,7 +33,7 @@ The real (*dirty*) solution would be preventing the performance degradation by d
 If in your network there's an always alive and connected linux device, you could use it to periodically run the **fickport.sh** script and automatically reboot the router.  
 
 In my real scenario, a "**Fritz!WLAN Repeater**" is always connected to the local network, so I decided to use it to run the "**fickport.sh**" rebooting script.
-> Have a look at the [fritz-image](fritz-image) sub-folder files and especially [README.md](fritz-image/README.md) to learn more about it
+> Have a look at the [fritz-image](fritz-image) sub-folder files to learn more about it
 
 # Technical details
 Wanna know more about techy stuff behind this project?    
