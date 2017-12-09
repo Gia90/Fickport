@@ -31,6 +31,8 @@ rstd () {
 	ln -sf /bin/busybox usersbin/inetd
 	ln -sf /bin/busybox usersbin/brctl
 	ln -sf /bin/busybox usersbin/chroot
+	# Change initial working dir to "fickport"
+	cd /var/fickport/
 	/usr/sbin/telnetd -l /sbin/ar7login -p 23
 }
 
