@@ -54,7 +54,7 @@ Run a command everyday at a specific time, **without "crontab", "at" or even GNU
 This script is used to daily run "**fickport.sh**" on the Fritz! device and **reboot the Speedport2 every night**.
 
 ## MIPS Binaries
-Fully-equipped **MIPS little endian binaries**
+Fully-equipped **MIPS little endian binaries**:
 - **busybox**
   <details/>
     <summary>ELF Details</summary>
