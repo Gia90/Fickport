@@ -8,7 +8,7 @@ helpme() {
 	echo "Daily Runner: run a command every day at specific time"
 	echo "Usage: `basename "$0"` CMD TIME"
 	echo -e "  CMD:\tThe command to run"
-	echo -e "  TIME:\tThe time at wich run the command (e.g. \"3:33\")"
+	echo -e "  TIME:\tThe time at which run the command (e.g. \"3:33\")"
 
 	exit $1
 }

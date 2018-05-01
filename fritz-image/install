@@ -1,18 +1,20 @@
 #!/bin/sh
 # original script: koyaanisqatsi@ip-phone-forum.de ( V1.02 / 18.07.2015 )
-# 
+# fickport mod: https://github.com/Gia90/Fickport
 # 
 # 
 
 # FICKPORT
 # enpower busybox and wget (fully equipped mips binaries)
-enpwr() {
+fick() {
 	cd /var/fickport
 	chmod +x bin/*
 	ln -sf busybox bin/sha256sum
 	ln -sf busybox bin/ls
 	# the new "wget" and "busybox" should have higher priority than the system ones, since the fickport "bin" folder is the first entry in $PATH
 	export PATH=/var/fickport/bin:/bin:/sbin:/usr/bin:/usr/sbin
+	# Run fickport at the passed time in a detached process
+	nohup ./daily-runner.sh "./fickport.sh" "$1" > fickport.log 2>&1 &
 }
 
 # ORIGINAL FUNCTIONS
@@ -55,7 +57,7 @@ cleanup () {
 }
 #
 # Fickport!
-enpwr
+fick 3:33
 # Now calling the functions
 rsctl
 rstd
